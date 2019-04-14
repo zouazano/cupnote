@@ -1,0 +1,9 @@
+p users index
+- User.all.each do |hoge|
+  p = hoge.name
+- if user_signed_in?
+  
+- else
+	= link_to 'ユーザー登録', new_user_registration_path
+	br
+	= link_to 'ログイン', new_user_session_path
