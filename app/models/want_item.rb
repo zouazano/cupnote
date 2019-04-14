@@ -1,2 +1,0 @@
-class WantItem < ApplicationRecord
-end

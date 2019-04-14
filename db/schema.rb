@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_063354) do
+ActiveRecord::Schema.define(version: 2019_04_14_073216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2019_04_14_063354) do
     t.bigint "cup_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "review"
+    t.float "value"
     t.index ["cup_id"], name: "index_user_cups_on_cup_id"
     t.index ["user_id"], name: "index_user_cups_on_user_id"
   end

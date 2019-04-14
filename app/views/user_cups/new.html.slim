@@ -1,0 +1,10 @@
+= form_for @user_cup, url: cup_user_cups_path do |f|
+
+  = f.label :value, "スコア", class:'control-label'
+  = f.number_field :value, min:"0", step:"0.1", max:"5", class:'form-control'
+
+  = f.hidden_field :user_id, value: @user.id
+  = f.hidden_field :user_id, value: @cup.id
+  = f.label :review, "コメント", class:'control-label'
+  = f.text_area :review, class:'form-control'
+  = f.submit "投稿", class:'form-control'

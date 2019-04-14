@@ -1,0 +1,2 @@
+module WantCupsHelper
+end
