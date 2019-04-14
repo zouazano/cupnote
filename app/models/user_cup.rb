@@ -1,0 +1,2 @@
+class UserCup < ApplicationRecord
+end
