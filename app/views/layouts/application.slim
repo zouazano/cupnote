@@ -2,24 +2,16 @@ doctype html
 html
   head
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title Cupnote
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
+  body.bg-light
     - if notice
       p.notice= notice
     - elsif alert
       p.alert= alert
-    .container
-      .row
-        .col-6.bg-info
-          = render 'shared/header'
-          a href = users_path
-            p users
-          a href = timelines_index_path
-            p timelines
-          a href = cups_path
-            p cups
-          = yield
+    = render 'shared/header'
+    = yield
