@@ -21,5 +21,8 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  def remember_me
+    true
+  end
   
 end
