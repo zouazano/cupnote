@@ -1,0 +1,4 @@
+- if user_signed_in? and @user.id == current_user.id
+  = render "shared/mypage"
+- else
+  = render "shared/userpage", user:@user

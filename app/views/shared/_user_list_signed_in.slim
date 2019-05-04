@@ -1,0 +1,16 @@
+- User.all.each do |hoge|
+  = link_to user_path(hoge)
+    span = hoge.name
+    br
+  /= link_to current_user.active_relationships.create(followed_id:hoge.id)
+    span フォロー
+p フォローしているユーザー
+- current_user.following.all.each do |hoge|
+  = link_to user_path(hoge)
+    span = hoge.name
+    br
+p フォロワー
+- current_user.followers.all.each do |hoge|
+  = link_to user_path(hoge)
+    span = hoge.name
+    br

@@ -1,0 +1,13 @@
+- if user_signed_in?
+  /= image_tag current_user.image.thumb('50x50#').url if current_user.image_stored?
+  = current_user.name+'さん' 
+  br
+
+  = link_to 'プロフィール変更', edit_user_registration_path
+  br
+  = link_to 'ログアウト', destroy_user_session_path, method: :delete
+- else
+  p ゲストさん
+  = link_to 'ユーザー登録', new_user_registration_path
+  br
+  = link_to 'ログイン', new_user_session_path

@@ -13,3 +13,8 @@ p =@cup.name
   - else
     = link_to new_cup_user_cup_path(@cup)
       p 食べた！に登録
+span 食べたい！
+span #{@cup.want_cups.count}件
+br
+span 食べた！
+span #{@cup.user_cups.count}件

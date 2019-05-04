@@ -1,0 +1,8 @@
+p =user.name
+- if user_signed_in?
+  - if current_user.following.include?(@user)
+    = link_to user_relationships_destroy_path(@user)
+      span フォロー解除
+  - else
+    = link_to user_relationships_create_path(@user)
+      span フォロー
