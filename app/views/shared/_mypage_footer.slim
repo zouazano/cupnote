@@ -1,0 +1,19 @@
+.container.bg-white.shadow-sm.bg-white.rounded.fixed-bottom
+  .row
+    .col-4
+      a href = timelines_index_path
+        img.my-1.mx-auto.d-block alt="bg-image" width="20" height="20" src=asset_path("home_muted.png")
+        small.text-muted.d-block.text-center ホーム
+    .col-4
+      a href = cups_path
+        img.my-1.mx-auto.d-block alt="bg-image" width="20" height="20" src=asset_path("search_muted.png")
+        small.text-muted.d-block.text-center 検索
+    .col-4
+      - if user_signed_in?
+        a href = user_path(current_user.id)
+          img.my-1.mx-auto.d-block alt="bg-image" width="20" height="20" src=asset_path("mypage_active.png")
+          small.text-active.d-block.text-center マイページ
+      - else
+        .div data-target="#exampleModal" data-toggle="modal"
+          img.my-1.mx-auto.d-block alt="bg-image" width="20" height="20" src=asset_path("mypage_active.png")
+          small.text-active.d-block.text-center マイページ

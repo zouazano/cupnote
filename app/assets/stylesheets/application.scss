@@ -17,8 +17,14 @@
 
 body {
     -webkit-text-size-adjust: 100%;
-    background-color: #f8f9fa;
-    color: #000000;
-    
-    
+    color: #111;
+}
+
+.text-active{
+	color: #f3980a;
+}
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
 }

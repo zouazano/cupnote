@@ -1,13 +1,78 @@
 - if user_signed_in?
-  /= image_tag current_user.image.thumb('50x50#').url if current_user.image_stored?
-  = current_user.name+'さん' 
-  br
-
-  = link_to 'プロフィール変更', edit_user_registration_path
-  br
-  = link_to 'ログアウト', destroy_user_session_path, method: :delete
+  .container.bg-white.mb-2.shadow-sm.bg-white.rounded
+    .row.d-flex.align-items-center
+      .col-10.my-2
+        a href = root_path
+          img.mb-1.img-fluid alt="bg-image" width="24" height="24" src=asset_path("square.png")
+          span.text-body.font-weight-bold.ml-1 CupNote
+      .col-2
+        /! Button trigger modal
+        .div.float-right data-target="#exampleModal" data-toggle="modal"
+          - if current_user.image_stored?
+            = image_tag current_user.image.thumb('26x26#').url, class:'img-fluid rounded-circle'
+          - else
+            img.mb-1.img-fluid.rounded alt="log-in" width="24" height="24" src=asset_path("profile.png")
+        /! Modal
+        #exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" role="dialog" tabindex="-1" 
+          .modal-dialog role="document" 
+            .modal-content
+              .modal-header
+                .modal-title 
+                  a href=user_path(current_user.id)
+                    - if current_user.image_stored?
+                      = image_tag current_user.image.thumb('50x50#').url, class:'img-fluid rounded-circle'
+                    - else
+                      img.mb-1.img-fluid.rounded alt="log-in" width="24" height="24" src=asset_path("profile.png")
+                    span.ml-1.text-body.font-weight-bold = current_user.name
+                    br
+                    br
+                    span.font-weight-bold.text-body #{current_user.followers.count}
+                    small.text-body.mr-1 フォロワー
+                    span.text-body.font-weight-bold #{current_user.following.count}
+                    small.text-body フォロー
+                    br
+                button.close aria-label="Close" data-dismiss="modal" type="button" 
+                  span aria-hidden="true"  ×
+              .modal-body
+                a href=user_path(current_user.id)
+                  img.mb-1.img-fluid.rounded alt="mypage" width="24" height="24" src=asset_path("mypage.png")
+                  span.text-secondary.ml-5 マイページ
+              .modal-footer
+                button.btn.btn-secondary data-dismiss="modal" type="button" 閉じる
+        /.btn-group.dropright
+          button#dropdownMenuButton.btn.btn-secondary aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
+            span 三
+          .dropdown-menu aria-labelledby="dropdownMenuButton"
+            a.dropdown-item href=user_path(current_user.id)
+              = image_tag current_user.image.thumb('50x50#').url if current_user.image_stored?
+              span.text-body.font-weight-bold = current_user.name
+            a.dropdown-item href=edit_user_registration_path
+              span プロフィール編集
+            a.dropdown-item href="#"  Something else here
 - else
-  p ゲストさん
-  = link_to 'ユーザー登録', new_user_registration_path
-  br
-  = link_to 'ログイン', new_user_session_path
+  .container.bg-white.mb-2.shadow-sm.bg-white.rounded
+    .row.d-flex.align-items-center
+      .col-10.my-2
+        a href = root_path
+          img.mb-1.img-fluid alt="bg-image" width="24" height="24" src=asset_path("square.png")
+          span.text-body.font-weight-bold.ml-1 CupNote
+      .col-2
+        /! Button trigger modal
+        .div.float-right data-target="#exampleModal" data-toggle="modal"
+          img.mb-1.img-fluid.rounded alt="log-in" width="24" height="24" src=asset_path("profile.png")
+        /! Modal
+        #exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" role="dialog" tabindex="-1" 
+          .modal-dialog role="document" 
+            .modal-content
+              .modal-header
+                h5#exampleModalLabel.modal-title 
+                  img.mb-1.img-fluid.rounded alt="log-in" width="24" height="24" src=asset_path("profile.png")
+                  span.text-body.font-weight-bold
+                button.close aria-label="Close" data-dismiss="modal" type="button" 
+                  span aria-hidden="true"  ×
+              .modal-body
+                a href=new_user_session_path
+                  img.mb-1.img-fluid.rounded alt="mypage" width="24" height="24" src=asset_path("log_in.png")
+                  span.text-secondary.ml-5 ログイン
+              .modal-footer
+                button.btn.btn-secondary data-dismiss="modal" type="button" 閉じる
