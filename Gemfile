@@ -22,7 +22,8 @@ gem 'devise'
 
 gem 'dragonfly', '~> 1.2.0'
 
-
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 
 gem 'slim-rails'
 
