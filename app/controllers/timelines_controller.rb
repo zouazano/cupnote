@@ -26,7 +26,10 @@ class TimelinesController < ApplicationController
           @hogas << hoga
         end
       end
+    else
+      redirect_to :action => "index"
     end
+
   end
   
 end
