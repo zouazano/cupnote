@@ -7,6 +7,10 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+  def want_cups
+    @user = User.find(params[:user_id])
+  end
+
   def followings
     @user = User.find(params[:user_id])
   end

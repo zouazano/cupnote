@@ -1,7 +1,7 @@
 a href = user_path(@user)
-  span.font-weight-bold 食べた！
+  span 食べた！
 a href = user_want_cups_path(@user)
-  span 食べたい！
+  span.font-weight-bold 食べたい！
 - if user_signed_in? and @user.id == current_user.id
   = render "shared/mypage"
   = render 'shared/mypage_footer'
