@@ -26,7 +26,7 @@ $(function () {
 
 
 $(function() {
-  $('.raty').raty({
+  $('.raty-form').raty({
     score: 0,
     starType: 'i', 
     half: true, 
@@ -37,5 +37,12 @@ $(function() {
   })
 })
 
-
+$(function() {
+  $('.raty-read').raty({
+    score: 3.5,
+    starType: 'i', 
+    half: true, 
+    readOnly: true,
+  })
+})
 
