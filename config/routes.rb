@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users do 
+  resources :users do
+    get "followings"
+    get "followers"
     get "relationships/create"
     get "relationships/destroy"
   end
@@ -25,7 +27,8 @@ Rails.application.routes.draw do
   
 
 
-  get 'timelines/index'
+  get "timelines/index"
+  get "timelines/friends"
 
   root to: "timelines#index"
 end

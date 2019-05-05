@@ -1,0 +1,18 @@
+.col-12.border.bg-white.my-2.shadow-sm.bg-white.rounded
+  a href = user_path(user.id)
+    .row.mb-2
+      .col-3
+        - if user.image_stored?
+          = image_tag user.image.thumb('50x50#').url, class:'mt-2 img-fluid rounded-circle'
+        - else
+          img.mt-2.img-fluid alt="bg-image" width="50" height="50" src=asset_path("profile.png")
+       
+      .col-9
+        span.text-body.font-weight-bold #{user.name}
+        - if user.following.include?(current_user)
+          small.float-right.text-secondary フォローされています
+        br
+        span.font-weight-bold.text-body #{user.followers.count}
+        span.text-body.mr-1 フォロワー
+        span.text-body.font-weight-bold #{user.following.count}
+        span.text-body フォロー

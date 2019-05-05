@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-12
+      a href = user_path(@user)
+        span.text-body ◀
+      span.font-weight-bold.d-inline.ml-2 フォロワー
+    .col-12.border-bottom.shadow-sm.bg-white.rounded.mb-1
+    - @user.followers.each do |hoge|
+      = render 'shared/follow_list', user:hoge
+      
+= render 'shared/home_footer'
