@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
-jquery@^3.4.1:
+jquery@^3.3.1, jquery@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+
+raty-js@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/raty-js/-/raty-js-2.9.0.tgz#63076c3e17d6d9824d3998fe0a5d4625022db6fb"
+  dependencies:
+    jquery "^3.3.1"
