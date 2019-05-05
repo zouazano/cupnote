@@ -1,8 +1,5 @@
 {
   "name": "cupnote",
   "private": true,
-  "dependencies": {
-    "jquery": "^3.4.1",
-    "raty-js": "^2.9.0"
-  }
+  "dependencies": {}
 }
