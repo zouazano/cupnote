@@ -8,3 +8,7 @@
       a href = user_followings_path(current_user)
         span.text-body.font-weight-bold #{current_user.following.count}
         span.text-body フォロー
+h1 Ajax#index
+p#hoge 赤色になるよ
+javascript:
+  | $("#hoge").css("color","red")
