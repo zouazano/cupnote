@@ -20,23 +20,16 @@
 //= require bootstrap-sprockets
 
 $(function () {
-  $('[data-toggle="popover"]').popover()
-})
-
-
-$(function() {
+  $('[data-toggle="popover"]').popover(), 
   $('.raty-form').raty({
     score: 0,
-    starType: 'i', 
-    half: true, 
-    numberMax: 5, 
-    precision: true, 
+    starType: 'i',
+    half: true,
+    numberMax: 5,
+    precision: true,
     target: undefined,
     targetKeep: true,
   })
-})
-
-$(function() {
   $('.raty-read').raty({
     score: 3.5,
     starType: 'i', 
@@ -44,4 +37,5 @@ $(function() {
     readOnly: true,
   })
 })
+
 
