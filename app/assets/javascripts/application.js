@@ -15,6 +15,7 @@
 //= require_tree .
 //= require jquery3
 //= require jquery
+//= require raty-js
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
@@ -22,3 +23,19 @@
 $(function () {
   $('[data-toggle="popover"]').popover()
 })
+
+
+$(function() {
+  $('.raty').raty({
+    score: 0,
+    starType: 'i', 
+    half: true, 
+    numberMax: 5, 
+    precision: true, 
+    target: undefined,
+    targetKeep: true,
+  })
+})
+
+
+

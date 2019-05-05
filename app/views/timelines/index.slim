@@ -27,7 +27,7 @@
                 a.d-flex.align-items-start href = user_path(hoga.user.id)
                   span.text-body.font-weight-bold = hoga.user.name
               .col-5
-                small.float-right.text-secondary #{time_ago_in_words(hoga.created_at)}
+                span.text-basic.float-right.text-secondary #{time_ago_in_words(hoga.created_at)}
             a href = cup_path(hoga.cup.id)
               span.text-active.font-weight-bold #{hoga.cup.name}
             - if hoga.methods.include?(:value)
@@ -35,7 +35,8 @@
               br
               span = hoga.value
               br
-              = simple_format(hoga.review)
+              span.text-body.text-basic
+                = simple_format(hoga.review)
             - else
               span を食べたい！
 
