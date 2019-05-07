@@ -3,26 +3,8 @@
     - Cup.all.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
       - unless i > Cup.all.size - 3 and i > 2
         .col-4.border-bottom.pb-1
-          = link_to cup_path(hoge)
-            span = hoge.name
-            br
-            - unless hoge.amazon_id.nil?
-              = hoge.amazon_id&.slice(0..-175).sub(/ >/, ' height="100" class="img-cup" >').html_safe
-            br
-            .mt-2
-              img alt="log-in" width="15" src=asset_path("cup.png")
-              img.ml-3 alt="log-in" width="15" src=asset_path("clip.png")
-              span.ml-3.text-active ★
+          = render 'shared/cup_page', hoge:hoge
       - else
         .col-4.pb-1
-          = link_to cup_path(hoge)
-            span = hoge.name
-            br
-            - unless hoge.amazon_id.nil?
-              = hoge.amazon_id&.slice(0..-175).sub(/ >/, ' height="100" class="img-cup" >').html_safe
-            br
-            .mt-2
-              img alt="log-in" width="15" src=asset_path("cup.png")
-              img.ml-3 alt="log-in" width="15" src=asset_path("clip.png")
-              span.ml-3.text-active ★
+          = render 'shared/cup_page', hoge:hoge
 = render 'shared/search_footer'
