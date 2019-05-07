@@ -1,8 +1,8 @@
 .container.bg-white.shadow-sm.bg-white.rounded
   .row
     - Cup.all.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
-      - unless i < 3
-        .col-4.border-top.pb-1
+      - unless i > Cup.all.size - 3
+        .col-4.border-bottom.pb-1
           = link_to cup_path(hoge)
             span = hoge.name
             br
