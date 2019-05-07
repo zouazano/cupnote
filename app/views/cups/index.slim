@@ -1,5 +1,28 @@
-- Cup.all.each do |hoge|
-  = link_to cup_path(hoge)
-    p = hoge.name
-
+.container.bg-white.shadow-sm.bg-white.rounded
+  .row
+    - Cup.all.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
+      - unless i < 3
+        .col-4.border-top.pb-1
+          = link_to cup_path(hoge)
+            span = hoge.name
+            br
+            - unless hoge.amazon_id.nil?
+              = hoge.amazon_id&.slice(0..-175).sub(/ >/, ' height="100" class="img-cup" >').html_safe
+            br
+            .mt-2
+              img alt="log-in" width="15" src=asset_path("cup.png")
+              img.ml-3 alt="log-in" width="15" src=asset_path("clip.png")
+              span.ml-3.text-active ★
+      - else
+        .col-4.pb-1
+          = link_to cup_path(hoge)
+            span = hoge.name
+            br
+            - unless hoge.amazon_id.nil?
+              = hoge.amazon_id&.slice(0..-175).sub(/ >/, ' height="100" class="img-cup" >').html_safe
+            br
+            .mt-2
+              img alt="log-in" width="15" src=asset_path("cup.png")
+              img.ml-3 alt="log-in" width="15" src=asset_path("clip.png")
+              span.ml-3.text-active ★
 = render 'shared/search_footer'

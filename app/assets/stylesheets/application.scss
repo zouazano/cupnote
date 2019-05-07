@@ -33,3 +33,14 @@ body {
     max-height: calc(100vh - 100px);
     overflow-y: auto;
 }
+
+.img-cup{
+	object-fit: cover;
+	max-width: 100%;
+	
+}
+
+.border-cup{
+	border-collapse: collapse;
+	display: table;
+}
