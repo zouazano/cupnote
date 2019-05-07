@@ -9,37 +9,6 @@
       - else
         .div.d-inline data-target="#exampleModal" data-toggle="modal"
           span.text-body.ml-3 フレンド
-.container.bg-white.shadow-sm.bg-white.rounded
-  .row
-    - @hogas.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
-      .col-12.border-bottom.py-2
-        .row
-          .col-2.px-0
-            a href = user_path(hoga.user.id)
-              - if hoga.user.image_stored?
-                = image_tag hoga.user.image.thumb('46x46#').url, class:'mx-auto d-block img-fluid rounded-circle mt-2'
-              - else
-                img.mt-2.mx-auto.d-block.mb-1.img-fluid.rounded alt="log-in" width="46" height="46" src=asset_path("profile.png")
-
-          .col-10.pl-0
-            a href = user_path(hoga.user.id)
-              span.text-body.font-weight-bold = hoga.user.name
-              span.text-basic.float-right.text-secondary #{time_ago_in_words(hoga.created_at)}
-            br
-            a href = cup_path(hoga.cup.id)
-              span.text-active.font-weight-bold #{hoga.cup.name}
-            - if hoga.methods.include?(:value)
-              span を食べた！
-              br
-              span.text-active
-                - unless hoga.value == nil
-                  | ✮#{hoga.value}
-                - else
-                  | ★-
-              br
-              span.text-body.text-basic
-                = simple_format(hoga.review)
-            - else
-              span を食べたい！
+= render 'shared/timeline'
 
 = render 'shared/home_footer'

@@ -21,6 +21,14 @@ body {
     color: #111;
 }
 
+.folder-no-wrap{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-no-wrap{
+	white-space: nowrap;
+}
 
 .text-active{
 	color: #f3980a;

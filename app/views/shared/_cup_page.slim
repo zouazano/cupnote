@@ -1,16 +1,17 @@
-= link_to cup_path(hoge)
-  span = hoge.name
-  br
-  - unless hoge.amazon_id.nil?
-    = hoge.amazon_id&.slice(0..-175).sub(/ >/, ' height="100" class="img-cup" >').html_safe
-  br
-  .row.mt-2
-    .col-3
-      img.mx-auto.d-block alt="cup" width="15" src=asset_path("star.png")
-      span.d-block.text-center.mr-1.text-active.text-basic = UserCup.where(cup_id:hoge.id).average(:value)&.round(1)
-    .col-3
-      img.mx-auto.d-block alt="cup" width="15" src=asset_path("cup.png")
-      span.d-block.text-center.mr-1.text-muted.text-basic = hoge.user_cups.count
-    .col-3
-      img.mx-auto.d-block alt="log-in" width="15" src=asset_path("clip.png")
-      span.d-block.text-center.text-muted.text-basic = hoge.want_cups.count
+.folder-no-wrap 
+  = link_to cup_path(hoge)
+    span.text-no-wrap.text-active.font-weight-bold = hoge.name
+    br
+    - unless hoge.amazon_id.nil?
+      = hoge.amazon_id&.slice(0..-175).sub(/ >/, ' height="100" class="img-cup" >').html_safe
+    br
+    .row.mt-2
+      .col-3
+        img.mx-auto.d-block alt="cup" width="15" src=asset_path("star.png")
+        small.d-block.text-center.text-active.text-basic = UserCup.where(cup_id:hoge.id).average(:value)&.round(1)
+      .col-3
+        img.mx-auto.d-block alt="cup" width="15" src=asset_path("cup.png")
+        span.d-block.text-center.mr-1.text-muted.text-basic = hoge.user_cups.count
+      .col-3
+        img.mx-auto.d-block alt="log-in" width="15" src=asset_path("clip.png")
+        span.d-block.text-center.text-muted.text-basic = hoge.want_cups.count
