@@ -1,14 +1,15 @@
-.col-12.border.bg-white.my-2.shadow-sm.bg-white.rounded
-  a href = user_path(user.id)
-    .row.mb-2
-      .col-3
+.col-12.border-bottom.py-2
+  .row
+    .col-2.px-0
+      a href = user_path(user.id)
         - if user.image_stored?
-          = image_tag user.image.thumb('50x50#').url, class:'mt-2 img-fluid rounded-circle'
+          = image_tag user.image.thumb('46x46#').url, class:'mx-auto d-block img-fluid rounded-circle mt-2'
         - else
-          img.mt-2.img-fluid alt="bg-image" width="50" height="50" src=asset_path("profile.png")
-       
-      .col-9
-        span.text-body.font-weight-bold #{user.name}
+          img.mt-2.mx-auto.d-block.mb-1.img-fluid.rounded alt="log-in" width="46" height="46" src=asset_path("profile.png")
+
+    .col-10.pl-0
+      a href = user_path(user.id)
+        span.text-body.font-weight-bold = user.name
         - if user.following.include?(current_user)
           small.float-right.text-secondary フォローされています
         br
