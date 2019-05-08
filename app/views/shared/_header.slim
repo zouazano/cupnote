@@ -26,10 +26,12 @@
                     span.ml-1.text-body.font-weight-bold = current_user.name
                     br
                     br
-                    span.font-weight-bold.text-body #{current_user.followers.count}
-                    small.text-body.mr-1 フォロワー
-                    span.text-body.font-weight-bold #{current_user.following.count}
-                    small.text-body フォロー
+                    a href = user_followers_path(current_user)
+                      span.font-weight-bold.text-body #{current_user.followers.count}
+                      span.text-basic.text-body フォロワー
+                    a href = user_followings_path(current_user)
+                      span.text-body.font-weight-bold #{current_user.following.count}
+                      span.text-basic.text-body フォロー
                     br
                 button.close aria-label="Close" data-dismiss="modal" type="button" 
                   span aria-hidden="true"  ×

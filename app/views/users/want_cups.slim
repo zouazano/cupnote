@@ -1,10 +1,28 @@
-a href = user_path(@user)
-  span 食べた！
-a href = user_want_cups_path(@user)
-  span.font-weight-bold 食べたい！
+.container
+  .row
+    .col-12
+      = link_to '◀ 戻る', :back, :class=>"font-weight-bold d-inline text-body"
+.container.bg-white.shadow-sm.bg-white.rounded
+  .row.border-bottom
+    - if user_signed_in? and @user.id == current_user.id
+      = render 'shared/my_profile'
+    - else 
+      = render 'shared/user_profile'
+    .col-12.mt-2
+      a href = user_path(@user)
+        span.text-muted 食べた！
+      a href = user_want_cups_path(@user)
+        span.font-weight-bold.text-body 食べたい！
+  .row
+    - @user.want_cups.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
+      - unless i > @user.want_cups.size - 3 and i > 2
+        .col-4.border-bottom.pb-1
+          = render 'shared/cup_page', hoge:hoge.cup
+      - else
+        .col-4.pb-1
+          = render 'shared/cup_page', hoge:hoge.cup
+
 - if user_signed_in? and @user.id == current_user.id
-  = render "shared/mypage"
   = render 'shared/mypage_footer'
-- else
-  = render "shared/userpage", user:@user
+- else	
   = render 'shared/home_footer'

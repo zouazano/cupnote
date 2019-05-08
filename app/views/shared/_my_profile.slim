@@ -1,0 +1,17 @@
+    .col-12.pt-2
+      - if @user.image_stored?
+        = image_tag @user.image.thumb('80x80#').url, class:'img-fluid rounded-circle'
+      - else
+        img.mb-1.img-fluid.rounded alt="log-in" width="80" height="80" src=asset_path("profile.png")
+      br
+      span.text-title.text-body.font-weight-bold = @user.name
+      br
+      span.text-basic = @user.profile
+      br
+      br
+      a href = user_followers_path(@user)
+        span.font-weight-bold.text-body #{@user.followers.count}
+        span.text-basic.text-body フォロワー
+      a href = user_followings_path(@user)
+        span.text-body.font-weight-bold #{@user.following.count}
+        span.text-basic.text-body フォロー
