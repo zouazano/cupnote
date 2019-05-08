@@ -6,16 +6,16 @@ h2 ユーザー登録
     br/
     = f.file_field :image
   br/
-
-  .field
-    = f.label :email
-    br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
     = f.label :name
     br/
     = f.text_field :name
-
+  br
+  .field
+    = f.label :email
+    br/
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+  br
   .field
     = f.label :password
     - if @minimum_password_length

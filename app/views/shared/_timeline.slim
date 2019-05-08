@@ -11,7 +11,7 @@
                 img.mt-2.mx-auto.d-block.mb-1.img-fluid.rounded alt="log-in" width="46" height="46" src=asset_path("profile.png")
           .col-10.pl-0
             a href = user_path(hoga.user.id)
-              .d-flex.justify-content-between.justify-content-between
+              .d-flex.justify-content-between
                 .folder-no-wrap
                   span.text-body.font-weight-bold.text-no-wrap = hoga.user.name
                 span.text-basic.text-secondary.text-no-wrap #{time_ago_in_words(hoga.created_at)}

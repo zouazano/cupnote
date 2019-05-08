@@ -1,9 +1,12 @@
-    .col-12.pt-2
+    .col-12.pt-2.d-flex.align-items-center.justify-content-between
       - if @user.image_stored?
         = image_tag @user.image.thumb('80x80#').url, class:'img-fluid rounded-circle'
       - else
         img.mb-1.img-fluid.rounded alt="log-in" width="80" height="80" src=asset_path("profile.png")
-      br
+      = link_to edit_user_registration_path
+        button.btn.btn-outline-primary.rounded-pill type="button"
+          span.font-weight-bold プロフィールを編集
+    .col-12
       span.text-title.text-body.font-weight-bold = @user.name
       br
       span.text-basic = @user.profile
