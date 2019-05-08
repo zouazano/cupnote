@@ -18,11 +18,12 @@
             - if hoga.methods.include?(:value)
               span 食べた！
               br
-              span.text-active
-                - unless hoga.value == nil
-                  | ✮#{hoga.value}
-                - else
-                  | ★-
+              - unless hoga.value == nil
+                img.mb-1 alt="★" width="14"src=asset_path("star.png")
+                span.text-active #{hoga.value}
+              - else
+                img.mb-1 alt="★" width="14"src=asset_path("star.png")
+                span.text-active -
               br
               span.text-body.text-basic.pb-0
                 = simple_format(hoga.review, :class => "mb-0")
