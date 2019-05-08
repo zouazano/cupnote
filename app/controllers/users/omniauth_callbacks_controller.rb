@@ -1,4 +1,4 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController　#ここはすでに記述されいてるのでコピペしなくていいです！
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     callback_from :facebook
   end
@@ -18,4 +18,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController�
       redirect_to new_user_registration_url
     end
   end
-end　#ここはすでに記述されいてるのでコピペしなくていいです！
+end
