@@ -8,11 +8,15 @@
       = render 'shared/my_profile'
     - else 
       = render 'shared/user_profile'
-    .col-12.mt-2
+    .col-12.mt-3
       a href = user_path(@user)
-        span.text-muted 食べた！
+        span.text-muted 
+          | 食べた！
+          | #{@user.user_cups.count}
       a href = user_want_cups_path(@user)
-        span.font-weight-bold.text-body 食べたい！
+        span.ml-4.font-weight-bold.text-body
+          | 食べたい！
+          | #{@user.want_cups.count}
   .row
     - @user.want_cups.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
       - unless i > @user.want_cups.size - 3 and i > 2

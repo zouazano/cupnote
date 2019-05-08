@@ -1,9 +1,9 @@
-.folder-no-wrap 
-  = link_to cup_path(hoge)
+a href = cup_path(hoge)
+  .folder-no-wrap 
     span.text-no-wrap.text-active.font-weight-bold = hoge.name
     br
     - unless hoge.amazon_id.nil?
-      = hoge.amazon_id&.slice(0..-175).sub(/ >/, ' height="100" class="img-cup" >').html_safe
+      = hoge.amazon_id&.sub(/ >/, ' height="100" class="img-cup" >').slice(/<img.* >/).html_safe
     br
     .row.mt-2
       .col-3
