@@ -9,7 +9,8 @@
     .col-12.mt-1
       span.text-title.text-body.font-weight-bold = @user.name
       br
-      span.text-basic = @user.profile
+      span.text-basic
+        = simple_format(@user.profile)
       br
       br
       a href = user_followers_path(@user)
