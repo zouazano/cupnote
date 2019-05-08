@@ -1,13 +1,20 @@
-= form_for @user_cup, url: cup_user_cups_path do |f|
-  = f.label :value, "スコア", class:'control-label'
-  = f.number_field :value, min:"0", step:"0.1", max:"5", class:'form-control', :placeholder => "0〜5"
-  br
-  = f.hidden_field :user_id, value: @user.id
-  = f.hidden_field :user_id, value: @cup.id
-  = f.label :review, "コメント", class:'control-label'
-  = f.text_area :review, class:'form-control'
+.container
+  .row
+    .col-12
+      = link_to '◀ レビュー投稿', :back, :class=>"font-weight-bold d-inline text-body"
+.container.bg-white.shadow-sm.bg-white.rounded
+  .row
+    .col-12.my-2
+      = form_for @user_cup, url: cup_user_cups_path do |f|
+        = f.label :value, "スコア", class:'control-label'
+        = f.number_field :value, min:"0", step:"0.1", max:"5", class:'form-control', :placeholder => "0〜5"
+        br
+        = f.hidden_field :user_id, value: @user.id
+        = f.hidden_field :user_id, value: @cup.id
+        = f.label :review, "コメント", class:'control-label'
+        = f.text_area :review, class:'form-control', :placeholder => "無記入でも投稿できます"
 
-  br
-  br
+        br
+        br
 
-  = f.submit "投稿", class:'form-control'
+        = f.submit "投稿!", class:'form-control'

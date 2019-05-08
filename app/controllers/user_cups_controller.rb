@@ -9,9 +9,9 @@ class UserCupsController < ApplicationController
     @user=current_user
     @cup=Cup.find(params[:cup_id])
     @user_cup = @user.user_cups.build(user_cup_params)
-    if UserCup.where(user_id: @user.id, cup_id:@cup.id).first_or_create(user_cup_params)
+    if UserCup.where(user_id: @user.id, cup_id:@cup.id).create(user_cup_params)
       redirect_to cup_path(@cup)
-      flash = '"試した！"に追加しました！'
+      flash = '食べた！に登録しました'
     else
       redirect_to root_url
     end
@@ -22,7 +22,7 @@ class UserCupsController < ApplicationController
     @cup=Cup.find(params[:cup_id])
     if UserCup.where(user_id: user.id, cup_id: @cup.id).destroy_all
       redirect_to cup_path(@cup)
-      flash = '"試した！"から削除しました'
+      flash = '食べた！から削除しました'
     else
       redirect_to root_url
     end
