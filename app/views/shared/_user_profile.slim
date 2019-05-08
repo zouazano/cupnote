@@ -3,16 +3,19 @@
         = image_tag @user.image.thumb('80x80#').url, class:'img-fluid rounded-circle'
       - else
         img.mb-1.img-fluid.rounded alt="log-in" width="80" height="80" src=asset_path("profile.png")
-      - if user_signed_in?
-        - if current_user.following.include?(@user)
-          = link_to user_relationships_destroy_path(@user)
-            button.btn.btn-primary.rounded-pill type="button" 
-              span.font-weight-bold フォロー中
-        - else
-          = link_to user_relationships_create_path(@user)
-            button.btn.btn-outline-primary.rounded-pill type="button"
-              span.font-weight-bold フォロー
-    .col-12
+      - if user_signed_in? and current_user.following.include?(@user)
+        = link_to user_relationships_destroy_path(@user)
+          button.btn.btn-primary.rounded-pill type="button" 
+            span.font-weight-bold フォロー中
+      - elsif user_signed_in?
+        = link_to user_relationships_create_path(@user)
+          button.btn.btn-outline-primary.rounded-pill type="button"
+            span.font-weight-bold フォロー
+      - else
+        .div data-target="#exampleModal" data-toggle="modal"
+          button.btn.btn-outline-primary.rounded-pill type="button"
+            span.font-weight-bold フォロー
+    .col-12.mt-1
       span.text-title.text-body.font-weight-bold = @user.name
       br
       span.text-basic = @user.profile

@@ -4,7 +4,7 @@ class WantCupsController < ApplicationController
     @cup=Cup.find(params[:cup_id])
     if WantCup.find_or_create_by(user_id: user.id, cup_id:@cup.id)
       redirect_to cup_path(@cup)
-      flash = '"欲しい！"に追加しました！'
+      flash[:note] = '食べたい！に追加しました'
     else
       redirect_to root_url
     end
@@ -15,7 +15,7 @@ class WantCupsController < ApplicationController
     @cup=Cup.find(params[:cup_id])
     if WantCup.where(user_id: user.id, cup_id: @cup.id).destroy_all
       redirect_to cup_path(@cup)
-      flash = '"試した！"から削除しました'
+      flash[:note] = '食べたい！から削除しました'
     else
       redirect_to root_url
     end

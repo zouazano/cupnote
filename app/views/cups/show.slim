@@ -1,22 +1,73 @@
-p =@cup.name
-- if user_signed_in?
-  - if current_user.want_cups.where(cup_id: @cup.id).present?
-    = link_to cup_want_cups_destroy_path(@cup)
-      p 食べたい！から削除
-  - else
-    = link_to cup_want_cups_create_path(@cup)
-      p 食べたい！に登録
-
-  - if current_user.user_cups.where(cup_id: @cup.id).present?
-    = link_to cup_user_cups_destroy_path(@cup)
-      p 食べた！から削除
-  - else
-    = link_to new_cup_user_cup_path(@cup)
-      p 食べた！に登録
-span 食べたい！
-span #{@cup.want_cups.count}件
-br
-span 食べた！
-span #{@cup.user_cups.count}件
+.container
+  .row
+    .col-12
+      = link_to '◀ 戻る', :back, :class=>"font-weight-bold d-inline text-body"
+.container.bg-white.shadow-sm.bg-white.rounded
+  .row
+    .col-12
+      span.text-title.text-active.font-weight-bold = @cup.name
+      br
+      - unless @cup.amazon_id.nil?
+        = @cup.amazon_id&.sub(/ >/, ' height="100" class="img-cup" >').slice(/<img.* >/).html_safe
+      br
+    .col-12.mt-2.border-top.pt-2
+      span.text-basic.font-weight-bold #{@cup.user_cups.count}件
+      span.text-muted.text-basic の食べた！
+      span.ml-3.text-basic.font-weight-bold #{@cup.want_cups.count}件
+      span.text-muted.text-basic の食べたい！
+    .col-12.mt-2.border-top.border-bottom.py-2
+      .row
+        .col-6
+          - if user_signed_in?
+            = link_to new_cup_user_cup_path(@cup)
+              img.mx-auto.d-block alt="cup" width="24" src=asset_path("cup.png")
+          - else
+            .div data-target="#exampleModal" data-toggle="modal"
+              img.mx-auto.d-block alt="cup" width="24" src=asset_path("cup.png")
+        .col-6
+          - if user_signed_in? and WantCup.where(user_id:current_user.id, cup_id:@cup.id).present?
+            = link_to cup_want_cups_destroy_path(@cup)
+              img.mx-auto.d-block alt="log-in" width="24" src=asset_path("clip-active.png")
+          - elsif user_signed_in?
+            = link_to cup_want_cups_create_path(@cup)
+              img.mx-auto.d-block alt="log-in" width="24" src=asset_path("clip.png")
+          - else
+            .div data-target="#exampleModal" data-toggle="modal"
+              img.mx-auto.d-block alt="log-in" width="24" src=asset_path("clip.png")
+        - if flash[:note]
+          .alert.alert-warning.alert-dismissible.fade.show.float-right role="alert" 
+            p = flash[:note]
+            button.close aria-label="Close" data-dismiss="alert" type="button" 
+              span aria-hidden="true"  ×
+    .col-12.mt-2
+      span.font-weight-bold スコア・レビュー
+    - @cup.user_cups.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
+      .col-12.py-2.border-bottom
+        .row
+          .col-2.px-0
+            a href = user_path(hoga.user.id)
+              - if hoga.user.image_stored?
+                = image_tag hoga.user.image.thumb('46x46#').url, class:'mx-auto d-block img-fluid rounded-circle mt-2'
+              - else
+                img.mt-2.mx-auto.d-block.mb-1.img-fluid.rounded alt="log-in" width="46" height="46" src=asset_path("profile.png")
+          .col-10.pl-0
+            a href = user_path(hoga.user.id)
+              .d-flex.justify-content-between
+                .folder-no-wrap
+                  span.text-body.font-weight-bold.text-no-wrap = hoga.user.name
+                span.text-basic.text-secondary.text-no-wrap #{time_ago_in_words(hoga.created_at)}
+            - if hoga.methods.include?(:value)
+              span 食べた！
+              br
+              span.text-active
+                - unless hoga.value == nil
+                  | ✮#{hoga.value}
+                - else
+                  | ★-
+              br
+              span.text-body.text-basic.pb-0
+                = simple_format(hoga.review, :class => "mb-0")
+    br
+    br
 
 = render "shared/search_footer"

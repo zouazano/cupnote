@@ -13,5 +13,9 @@ a href = cup_path(hoge)
         img.mx-auto.d-block alt="cup" width="15" src=asset_path("cup.png")
         span.d-block.text-center.mr-1.text-muted.text-basic = hoge.user_cups.count
       .col-3
-        img.mx-auto.d-block alt="log-in" width="15" src=asset_path("clip.png")
-        span.d-block.text-center.text-muted.text-basic = hoge.want_cups.count
+        - unless user_signed_in? and WantCup.where(user_id:current_user.id, cup_id:hoge.id).present?
+          img.mx-auto.d-block alt="log-in" width="15" src=asset_path("clip.png")
+          span.d-block.text-center.text-muted.text-basic = hoge.want_cups.count
+        - else
+          img.mx-auto.d-block alt="log-in" width="15" src=asset_path("clip-active.png")
+          span.d-block.text-center.text-active.text-basic = hoge.want_cups.count
