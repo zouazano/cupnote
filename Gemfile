@@ -21,6 +21,11 @@ gem 'devise'
 
 
 gem 'dragonfly', '~> 1.2.0'
+gem 'dragonfly-s3_data_store'
+gem 'mime-types'
+
+gem 'dotenv-rails'
+
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
