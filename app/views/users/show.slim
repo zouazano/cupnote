@@ -10,11 +10,13 @@
       = render 'shared/user_profile'
     .col-12.mt-3
       a href = user_path(@user)
+        img alt="cup" width="15" src=asset_path("cup.png")
         span.font-weight-bold.text-body
           | 食べた！
           | #{@user.user_cups.count}
       a href = user_want_cups_path(@user)
-        span.ml-4.text-muted
+        img.ml-4 alt="cup" width="15" src=asset_path("clip.png")
+        span.text-muted
           | 食べたい！
           | #{@user.want_cups.count}
   .row

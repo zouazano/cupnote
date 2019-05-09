@@ -34,13 +34,13 @@
         .col-6
           - if user_signed_in? and WantCup.where(user_id:current_user.id, cup_id:@cup.id).present?
             = link_to cup_want_cups_destroy_path(@cup)
-              img.mx-auto.d-block alt="log-in" width="24" src=asset_path("clip-active.png")
+              img.mx-auto.d-block alt="log-in" width="26" src=asset_path("clip-active.png")
           - elsif user_signed_in?
             = link_to cup_want_cups_create_path(@cup)
-              img.mx-auto.d-block alt="log-in" width="24" src=asset_path("clip.png")
+              img.mx-auto.d-block alt="log-in" width="26" src=asset_path("clip.png")
           - else
             .div data-target="#exampleModal" data-toggle="modal"
-              img.mx-auto.d-block alt="log-in" width="24" src=asset_path("clip.png")
+              img.mx-auto.d-block alt="log-in" width="26" src=asset_path("clip.png")
         - if flash[:note]
           .alert.alert-warning.alert-dismissible.fade.show.float-right role="alert" 
             p = flash[:note]
@@ -64,6 +64,7 @@
                   span.text-body.font-weight-bold.text-no-wrap = hoga.user.name
                 span.text-basic.text-secondary.text-no-wrap #{time_ago_in_words(hoga.created_at)}
             - if hoga.methods.include?(:value)
+              img alt="cup" width="15" src=asset_path("cup.png")
               span 食べた！
               br
               - unless hoga.value == nil
