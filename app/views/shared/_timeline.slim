@@ -8,7 +8,7 @@
               - if hoga.user.image_stored?
                 = image_tag hoga.user.image.thumb('46x46#').url, class:'mx-auto d-block img-fluid rounded-circle mt-2'
               - else
-                img.mt-2.mx-auto.d-block.mb-1.img-fluid.rounded alt="log-in" width="46" height="46" src=asset_path("profile.png")
+                img.mt-2.mx-auto.d-block.mb-1.img-fluid.rounded-circle alt="log-in" width="46" height="46" src=asset_path("profile.png")
           .col-10.pl-0
             a href = user_path(hoga.user.id)
               .d-flex.justify-content-between
