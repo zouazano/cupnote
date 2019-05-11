@@ -48,35 +48,14 @@
               span aria-hidden="true"  ×
     .col-12.mt-2
       span.font-weight-bold スコア・レビュー
-    - @cup.user_cups.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
-      .col-12.py-2.border-bottom
-        .row
-          .col-2.px-0
-            a href = user_path(hoga.user.id)
-              - if hoga.user.image_stored?
-                = image_tag hoga.user.image.thumb('46x46#').url, class:'mx-auto d-block img-fluid rounded-circle mt-2'
-              - else
-                img.mt-2.mx-auto.d-block.mb-1.img-fluid.rounded alt="log-in" width="46" height="46" src=asset_path("profile.png")
-          .col-10.pl-0
-            a href = user_path(hoga.user.id)
-              .d-flex.justify-content-between
-                .folder-no-wrap
-                  span.text-body.font-weight-bold.text-no-wrap = hoga.user.name
-                span.text-basic.text-secondary.text-no-wrap #{time_ago_in_words(hoga.created_at)}
-            - if hoga.methods.include?(:value)
-              img alt="cup" width="15" src=asset_path("cup.png")
-              span 食べた！
-              br
-              - unless hoga.value == nil
-                img.mb-1 alt="★" width="14"src=asset_path("star.png")
-                span.text-active #{hoga.value}
-              - else
-                img.mb-1 alt="★" width="14"src=asset_path("star.png")
-                span.text-active -
-              br
-              span.text-body.text-basic.pb-0
-                = simple_format(hoga.review, :class => "mb-0")
+    - if user_signed_in?
+      - @related_user_cups&.uniq&.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
+        = render 'shared/reviews', hoga:hoga
+      - @unrelated_user_cups&.uniq&.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
+        = render 'shared/reviews', hoga:hoga
+    - else 
+      - @cup.user_cups.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
+        = render 'shared/reviews', hoga:hoga
     br
     br
-
 = render "shared/search_footer"
