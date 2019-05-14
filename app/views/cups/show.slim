@@ -10,13 +10,17 @@
       br
       span.text-title.text-active.font-weight-bold = @cup.name
       br
-      - unless @cup.amazon_id.nil?
+      - if @cup.amazon_id.present?
         = @cup.amazon_id&.sub(/ >/, ' height="100" class="img-cup" >').html_safe
         br
         br
         a href = @cup.amazon_id.slice(/href.*">/).slice(5..-2) target="blank"
           button.btn.btn-warning.shadow-sm.rounded type="button"
             span.text-white amazonで詳細を見る
+      - elsif @cup.image_id.include?("nowprinting")
+        img.img-cup alt="cup" height="100" src=asset_path('cup-printing.png')
+      - else
+        img.img-cup alt="cup" height="100" src=@cup.image_id
     .col-12.mt-2.border-top.pt-2
       span.text-basic.font-weight-bold #{@cup.user_cups.count}件
       span.text-muted.text-basic の食べた！

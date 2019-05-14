@@ -2,8 +2,12 @@ a href = cup_path(hoge)
   .folder-no-wrap 
     span.text-no-wrap.text-active.font-weight-bold = hoge.name
     br
-    - unless hoge.amazon_id.nil?
+    - if hoge.amazon_id.present?
       = hoge.amazon_id&.sub(/ >/, ' height="100" class="img-cup" >').slice(/<img.* >/).html_safe
+    - elsif hoge.image_id.include?("nowprinting")
+      img.img-cup alt="cup" height="100" src=asset_path('cup-printing.png')
+    - else
+      img.img-cup alt="cup" height="100" src=hoge.image_id
     br
     .row.mt-2
       .col-3
