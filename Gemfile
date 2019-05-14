@@ -33,6 +33,7 @@ gem 'jquery-rails'
 
 gem 'slim-rails'
 
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 
 # Use CoffeeScript for .coffee assets and views

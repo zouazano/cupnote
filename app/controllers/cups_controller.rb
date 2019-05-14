@@ -1,7 +1,11 @@
 class CupsController < ApplicationController
+
   def index
-  	
+    @q = Cup.ransack(params[:q])
+    @cups = @q.result(distinct: true)
+    @makers = Maker.order('name ASC').all
   end
+
   def show
   	@cup = Cup.find(params[:id])
     if user_signed_in?
@@ -17,4 +21,10 @@ class CupsController < ApplicationController
       @unrelated_user_cups = @cup.user_cups - @related_user_cups
     end
   end
+
+  private
+  def search_params
+    params.require(:q).permit(:name_cont)
+  end
+  
 end

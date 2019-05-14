@@ -1,0 +1,10 @@
+.container.bg-white.shadow-sm.bg-white.rounded
+  .row
+    .col-12
+      = search_form_for(@q, url:cups_path) do |f|
+        = f.label :name_cont, '検索'
+        = f.search_field :name_cont
+        br
+        = f.label :maker_id_eq, 'メーカー'
+        = f.collection_select :maker_id_eq, @makers, :id, :name, :include_blank => '指定なし'
+        = f.submit
