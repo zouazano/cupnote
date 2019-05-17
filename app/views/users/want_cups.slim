@@ -19,14 +19,25 @@
         span.font-weight-bold.text-body
           | 食べたい！
           | #{@user.want_cups.count}
-  .row
-    - @user.want_cups.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
-      - unless i > @user.want_cups.size - 3 and i > 2
-        .col-4.border-bottom.pb-1
-          = render 'shared/cup_page', hoge:hoge.cup
-      - else
-        .col-4.pb-1
-          = render 'shared/cup_page', hoge:hoge.cup
+  - unless @user.want_cups.first.nil?
+    .row
+      - @user.want_cups.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
+        - unless i > @user.want_cups.size - 3 and i > 2
+          .col-4.border-bottom.pb-1
+            = render 'shared/cup_page', hoge:hoge.cup
+        - else
+          .col-4.pb-1
+            = render 'shared/cup_page', hoge:hoge.cup
+  - else
+    .row
+      .col-12.pt-3
+        .text-center.text-muted
+          span 気になるカップ麺は
+          span 
+            img alt="comment" width="30" height="30" src=asset_path("cup.png")
+          span 「食べたい！」を押して、チェックしておきましょう。
+        .text-center
+          img width="300" height="300" src=asset_path('tabetaize.png')
 
 - if user_signed_in? and @user.id == current_user.id
   = render 'shared/mypage_footer'
