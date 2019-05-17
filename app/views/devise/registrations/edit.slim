@@ -9,7 +9,7 @@
         = devise_error_messages!
         br/
         .field
-          = f.label :現在のパスワード, class: 'text-danger font-weight-bold'
+          = f.label :value, "[必須]現在のパスワード", class:'text-danger font-weight-bold'
           br/
           = f.password_field :current_password, autocomplete: "current-password"
         br/

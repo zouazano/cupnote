@@ -40,6 +40,9 @@
           span 「食べた！」を押して、スコアをつけたりレビューを残しましょう。
         .text-center
           img width="300" height="300" src=asset_path('tabetaze.png')
+        br
+        br
+        br
 
 - if user_signed_in? and @user.id == current_user.id
   = render 'shared/mypage_footer'

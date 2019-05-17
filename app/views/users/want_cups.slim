@@ -36,10 +36,13 @@
           br
           span 気になるカップ麺は
           span 
-            img alt="comment" width="30" height="30" src=asset_path("cup.png")
+            img.mb-1 alt="comment" width="30" height="30" src=asset_path("clip-active.png")
           span 「食べたい！」を押して、チェックしておきましょう。
         .text-center
           img width="300" height="300" src=asset_path('tabetaize.png')
+        br
+        br
+        br
 
 - if user_signed_in? and @user.id == current_user.id
   = render 'shared/mypage_footer'
