@@ -52,14 +52,26 @@
               span aria-hidden="true"  ×
     .col-12.mt-2
       span.font-weight-bold スコア・レビュー
-    - if user_signed_in?
-      - @related_user_cups&.uniq&.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
-        = render 'shared/reviews', hoga:hoga
-      - @unrelated_user_cups&.uniq&.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
-        = render 'shared/reviews', hoga:hoga
-    - else 
-      - @cup.user_cups.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
-        = render 'shared/reviews', hoga:hoga
+    - unless @cup.user_cups.first.nil?
+      - if user_signed_in?
+        - @related_user_cups&.uniq&.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
+          = render 'shared/reviews', hoga:hoga
+        - @unrelated_user_cups&.uniq&.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
+          = render 'shared/reviews', hoga:hoga
+      - else 
+        - @cup.user_cups.sort_by {|hoga| hoga.created_at }.reverse.each do |hoga|
+          = render 'shared/reviews', hoga:hoga
+    - else
+      .col-12.py-2.border-bottom
+        span.text-muted レビューはまだありません。
+        br
+        img alt="cup" width="15" src=asset_path("cup.png")
+        span.text-muted 「食べた！」
+        br
+        span.text-muted を押して、レビューを投稿しましょう。
+        br
+        br
+        
     br
     br
 = render "shared/search_footer"
