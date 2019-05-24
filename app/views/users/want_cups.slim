@@ -3,20 +3,20 @@
     .col-12
       = link_to '◀ 戻る', :back, :class=>"font-weight-bold d-inline text-body"
 .container.bg-white.shadow-sm.bg-white.rounded
-  .row.border-bottom
+  .row
     - if user_signed_in? and @user.id == current_user.id
       = render 'shared/my_profile'
     - else 
       = render 'shared/user_profile'
-    .col-12.mt-3
+    .col-12.mt-3.border-bottom.pb-1.mb-3
       a href = user_path(@user)
         img alt="cup" width="15" src=asset_path("cup.png")
         span.text-muted
           | 食べた！
           | #{@user.user_cups.count}
-      a href = user_want_cups_path(@user)
-        img.ml-4 alt="cup" width="15" src=asset_path("clip-active.png")
-        span.font-weight-bold.text-body
+      a.border-active.pb-1.ml-4 href = user_want_cups_path(@user)
+        img alt="cup" width="15" src=asset_path("clip-active.png")
+        span.font-weight-bold.text-active
           | 食べたい！
           | #{@user.want_cups.count}
   - unless @user.want_cups.first.nil?
