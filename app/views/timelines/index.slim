@@ -1,8 +1,8 @@
-.container.mb-1
+.container
   .row
-    .col-12
-      a href = timelines_index_path
-        span.font-weight-bold.text-body トレンド
+    .col-12.border-bottom.pb-1.bg-white
+      a.border-active.pb-1 href = timelines_index_path
+        span.font-weight-bold.text-active トレンド
       - if user_signed_in?
         a href = timelines_friends_path
           span.text-muted.ml-3 フレンド

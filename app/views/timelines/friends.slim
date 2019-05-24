@@ -1,14 +1,14 @@
-.container.mb-1
+.container
   .row
-    .col-12
+    .col-12.border-bottom.pb-1.bg-white
       a href = timelines_index_path
         span.text-muted トレンド
       - if user_signed_in?
-        a href = timelines_friends_path
-          span.font-weight-bold.text-body.ml-3 フレンド
+        a.border-active.pb-1.ml-3 href = timelines_friends_path
+          span.font-weight-bold.text-active フレンド
       - else
-        .div.d-inline data-target="#exampleModal" data-toggle="modal"
-          span.text-body.ml-3 フレンド
+        .div.d-inline.border-active.pb-1.ml-3 data-target="#exampleModal" data-toggle="modal"
+          span.font-weight-bold.text-active フレンド
 = render 'shared/timeline'
 
 = render 'shared/home_footer'
