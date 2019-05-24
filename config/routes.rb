@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'user_cups/destroy'
   get 'want_cups/create'
   get 'want_cups/destroy'
+
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
@@ -27,7 +29,11 @@ Rails.application.routes.draw do
     get "want_cups/create"
     get "want_cups/destroy"
   end
-  
+  resources :user_cups do
+    get 'likes/create'
+    get 'likes/destroy'
+  end
+
 
 
   get "timelines/index"

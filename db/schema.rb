@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_14_052938) do
+ActiveRecord::Schema.define(version: 2019_05_24_201555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2019_05_14_052938) do
     t.string "amazon_id"
     t.integer "maker_id"
     t.string "image_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_cup_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_cup_id"], name: "index_likes_on_user_cup_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "makers", force: :cascade do |t|
@@ -77,6 +86,8 @@ ActiveRecord::Schema.define(version: 2019_05_14_052938) do
     t.index ["user_id"], name: "index_want_cups_on_user_id"
   end
 
+  add_foreign_key "likes", "user_cups"
+  add_foreign_key "likes", "users"
   add_foreign_key "user_cups", "cups"
   add_foreign_key "user_cups", "users"
   add_foreign_key "want_cups", "cups"
