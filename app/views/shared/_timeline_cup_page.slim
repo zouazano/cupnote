@@ -10,13 +10,13 @@ a href = cup_path(hoge)
       img.mx-auto.d-block.img-cup alt="cup" height="100" src=hoge.image_id
     br
     .row.mt-2
-      .col-3
+      .col-4
         img.mx-auto.d-block alt="cup" width="15" src=asset_path("star.png")
         small.d-block.text-center.text-active.text-basic = UserCup.where(cup_id:hoge.id).average(:value)&.round(1)
-      .col-3
+      .col-4
         img.mx-auto.d-block alt="cup" width="15" src=asset_path("cup.png")
         span.d-block.text-center.mr-1.text-muted.text-basic = hoge.user_cups.count
-      .col-3
+      .col-4
         - unless user_signed_in? and WantCup.where(user_id:current_user.id, cup_id:hoge.id).present?
           img.mx-auto.d-block alt="log-in" width="15" src=asset_path("clip.png")
           span.d-block.text-center.text-muted.text-basic = hoge.want_cups.count
