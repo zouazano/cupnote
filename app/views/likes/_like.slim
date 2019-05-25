@@ -1,0 +1,12 @@
+- if user_signed_in? and Like.find_by(user_id:current_user.id, user_cup_id:user_cup.id).present?
+  = link_to user_cup_likes_destroy_path(user_cup_id:user_cup.id), id: "like-button", remote: "true"
+    img.mb-1 alt="いいね" width="14" src=asset_path("like-active.png")
+    span.text-active.text-basic いいネ！ #{user_cup.likes.count}
+- elsif user_signed_in?
+  = link_to user_cup_likes_create_path(user_cup_id:user_cup.id), id: "like-button", remote: "true"
+    img.mb-1 alt="いいね" width="14" src=asset_path("like-muted.png")
+    span.text-muted.text-basic いいネ！ #{user_cup.likes.count}
+- else
+  .div data-target="#exampleModal" data-toggle="modal"
+    img.mb-1 alt="いいね" width="14" src=asset_path("like-muted.png")
+    span.text-muted.text-basic いいネ！ #{user_cup.likes.count}

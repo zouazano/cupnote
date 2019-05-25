@@ -30,18 +30,9 @@
                 = simple_format(hoga.review, :class => "mb-0")
               .pb-1.border.bg-white.shadow-sm.bg-white.rounded.pl-1.mb-2
                 = render 'shared/timeline_cup_page', hoge:hoga.cup
-              - if user_signed_in? and Like.where(user_id:current_user.id, user_cup_id:hoga.id).present?
-                = link_to user_cup_likes_destroy_path(hoga)
-                  img.mb-1 alt="いいね" width="14" src=asset_path("like-active.png")
-                  span.text-active.text-basic いいネ！ #{hoga.likes.count}
-              - elsif user_signed_in?
-                = link_to user_cup_likes_create_path(hoga)
-                  img.mb-1 alt="いいね" width="14" src=asset_path("like-muted.png")
-                  span.text-muted.text-basic いいネ！ #{hoga.likes.count}
-              - else
-                .div data-target="#exampleModal" data-toggle="modal"
-                  img.mb-1 alt="いいね" width="14" src=asset_path("like-muted.png")
-                  span.text-muted.text-basic いいネ！ #{hoga.likes.count}
+
+              #likes
+                = render 'likes/like', user_cup:hoga
 
             - else
               img alt="cup" width="15" src=asset_path("clip-active.png")
