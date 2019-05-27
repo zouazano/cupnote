@@ -19,7 +19,7 @@
         span.text-muted
           | 食べたい！
           | #{@user.want_cups.count}
-  - unless @user.user_cups.first.nil?
+  - unless @user.user_cups.nil?
     .row
       - @user.user_cups.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
         - unless i > @user.user_cups.size - 3 and i > 2
