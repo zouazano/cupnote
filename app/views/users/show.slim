@@ -10,7 +10,7 @@
       = render 'shared/user_profile'
     .col-12.border-bottom.pb-1.mb-3
       a.border-active.pb-1 href = user_path(@user)
-        img alt="cup" width="15" src=asset_path("cup.png")
+        img alt="cup" width="18" src=asset_path("cup-active.png")
         span.font-weight-bold.text-active
           | 食べた！
           | #{@user.user_cups.count}

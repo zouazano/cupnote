@@ -16,7 +16,7 @@
                   span.text-body.font-weight-bold.text-no-wrap = hoga.user.name
                 span.text-basic.text-secondary.text-no-wrap #{time_ago_in_words(hoga.created_at)}
             - if hoga.methods.include?(:value)
-              img alt="cup" width="15" src=asset_path("cup.png")
+              img alt="cup" width="17" src=asset_path("cup-active.png")
               span 食べた！
               br
               - unless hoga.value == nil
@@ -32,7 +32,7 @@
                 = render 'shared/timeline_cup_page', hoge:hoga.cup
 
               #likes
-                = render 'likes/like', user_cup:hoga
+                = render partial: 'likes/like', locals:{ user_cup: hoga }
 
             - else
               img alt="cup" width="15" src=asset_path("clip-active.png")

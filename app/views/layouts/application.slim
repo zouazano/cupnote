@@ -2,6 +2,10 @@ doctype html
 html
   head
     script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" 
+    /javascript:
+      $(document).ready(function(){
+        alert("jQueryファイルの読み込み完了でーす。");
+      });
     
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
@@ -9,7 +13,6 @@ html
     = favicon_link_tag('favicon.ico')
     = csrf_meta_tags
     = csp_meta_tag
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body.bg-light
