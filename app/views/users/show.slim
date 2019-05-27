@@ -13,15 +13,15 @@
         img alt="cup" width="18" src=asset_path("cup-active.png")
         span.font-weight-bold.text-active
           | 食べた！
-          | #{@user.user_cups.count}
+          | #{UserCup.where(user_id:@user.id).count}
       a href = user_want_cups_path(@user)
         img.ml-4 alt="cup" width="15" src=asset_path("clip.png")
         span.text-muted
           | 食べたい！
-          | #{@user.want_cups.count}
-  - unless @user.user_cups.nil?
+          | #{WantCup.where(user_id:@user.id).count}
+  - unless UserCup.where(user_id:@user.id).nil?
     .row
-      - @user.user_cups.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
+      - UserCup.where(user_id:@user.id).sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
         - unless i > @user.user_cups.size - 3 and i > 2
           .col-4.border-bottom.pb-1
             = render 'shared/cup_page', hoge:hoge.cup
