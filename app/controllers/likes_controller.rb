@@ -18,12 +18,6 @@ class LikesController < ApplicationController
     end
   end
 
-  private
-
-  def set_variables
-    @user_cup = UserCup.find(params[:user_cup_id])
-    @id_name = "#like-link-#{@user_cup.id}"
-    @id_like = "#like-#{@user_cup.id}"
-  end
+  
 
 end

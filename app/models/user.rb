@@ -27,7 +27,6 @@ class User < ApplicationRecord
   has_many :cups, through: :user_cups
 
   has_many :likes, dependent: :destroy
-  has_many :user_cups, through: :likes
 
   has_many :want_cups, dependent: :destroy
   has_many :wants_cups, through: :want_cups, source: :cup
