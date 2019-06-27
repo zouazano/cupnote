@@ -1,4 +1,24 @@
 = render 'shared/search_form'
+.container.bg-white.shadow-sm.bg-white.rounded.mb-3
+  .row
+    .col-12.border-bottom
+      span.font-weight-bold みんなが食べてるランキング
+    - @rank_cups.sort_by {|cup| cup.user_cups.count }.reverse.first(5).each_with_index do |cup, i|
+      .col-12.border-bottom
+        span.text-muted.text-basic #{i+1}. みんなが食べてるランキング
+        .pb-1.border.bg-white.shadow-sm.bg-white.rounded.pl-1.mb-2
+          = render 'shared/timeline_cup_page', hoge:cup
+
+.container.bg-white.shadow-sm.bg-white.rounded.mb-3
+  .row
+    .col-12.border-bottom
+      span.font-weight-bold 評価が高いランキング
+    - @rank_cups.sort_by {|cup| cup.user_cups.average(:value)&.round(1) }.reverse.first(5).each_with_index do |cup, i|
+      .col-12.border-bottom
+        span.text-muted.text-basic #{i+1}. 評価が高いランキング
+        .pb-1.border.bg-white.shadow-sm.bg-white.rounded.pl-1.mb-2
+          = render 'shared/timeline_cup_page', hoge:cup
+
 .container.bg-white.shadow-sm.bg-white.rounded
   .row
     - @cups.sort_by {|hoga| hoga.created_at }.each_with_index do |hoge, i|
