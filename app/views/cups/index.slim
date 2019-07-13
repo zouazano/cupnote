@@ -8,8 +8,14 @@
       - @rank_cups.sort_by {|cup| cup.user_cups.count }.reverse.first(5).each_with_index do |cup, i|
         .col-12.border-bottom
           span.text-muted.text-basic #{i+1}. みんなが食べてるランキング
-          .pb-1.border.bg-white.shadow-sm.bg-white.rounded.pl-1.mb-2
-            = render 'shared/timeline_cup_page', hoge:cup
+          .row
+            .col-6
+              .pb-1.border.bg-white.shadow-sm.bg-white.rounded.pl-1.mb-2
+                = render 'shared/cup_page', hoge:cup
+            .col-6
+              span.text-active.font-weight-bold = cup&.maker&.name
+              br
+              span.text-active.font-weight-bold = cup.name
 
   .container.bg-white.shadow-sm.bg-white.rounded.mb-3
     .row
@@ -18,8 +24,14 @@
       - @rank_cups.sort_by {|cup| cup.user_cups.average(:value)&.round(1) }.reverse.first(5).each_with_index do |cup, i|
         .col-12.border-bottom
           span.text-muted.text-basic #{i+1}. 評価が高いランキング
-          .pb-1.border.bg-white.shadow-sm.bg-white.rounded.pl-1.mb-2
-            = render 'shared/timeline_cup_page', hoge:cup
+          .row
+            .col-6
+              .pb-1.border.bg-white.shadow-sm.bg-white.rounded.pl-1.mb-2
+                = render 'shared/cup_page', hoge:cup
+            .col-6
+              span.text-active.font-weight-bold = cup&.maker&.name
+              br
+              span.text-active.font-weight-bold = cup.name
 
 .container.bg-white.shadow-sm.bg-white.rounded
   .row
