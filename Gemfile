@@ -22,7 +22,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 
-gem 'dragonfly', '~> 1.2.0'
+gem 'dragonfly', '~> 1.4.0'
 gem 'dragonfly-s3_data_store'
 gem 'mime-types'
 
